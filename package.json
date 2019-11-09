@@ -1,0 +1,44 @@
+{
+  "name": "io-email-worker-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r esm server.js",
+    "test": "mocha --require esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArmandJ77/IO-Email-Worker-Core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArmandJ77/IO-Email-Worker-Core/issues"
+  },
+  "homepage": "https://github.com/ArmandJ77/IO-Email-Worker-Core#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
+    "dotenv": "^8.0.0",
+    "esm": "^3.2.25",
+    "handlebars": "^4.4.5",
+    "mjml": "^4.4.0",
+    "moment": "^2.24.0",
+    "nodemailer": "^6.3.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.10.2",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "chai": "*",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "mocha": "*",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}
