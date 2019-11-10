@@ -1,13 +1,13 @@
-import { expect } from "chai";
-import IO_EWC from "../index";
+// import { expect } from "chai";
+// import IO_EWC from "../index";
 
-const sut = "structureValidation";
+// const sut = "structureValidation";
 
-describe(sut, function() {
-  describe("Given A Valid DataSet", function() {
-    it("should return a succesful validation", function() {
-      let value = IO_EWC.getMessage("armand");
-      expect(value).to.equal("Hi, armand");
-    });
-  });
-});
+// describe(sut, function() {
+//   describe("Given A Valid DataSet", function() {
+//     it("should return a succesful validation", function() {
+//       let value = IO_EWC.getMessage("armand");
+//       expect(value).to.equal("Hi, armand");
+//     });
+//   });
+// });
