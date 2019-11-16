@@ -11,9 +11,7 @@ const DISTRIBUTION_EMAIL_PASSWORD = process.env.DISTRIBUTION_EMAIL_PASSWORD;
 
 const GivenAValidDistributionDataSet = {
   smtpAccount: {
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: "gmail",
     auth: {
       user: DISTRIBUTION_EMAIL_ADDRESS,
       pass: DISTRIBUTION_EMAIL_PASSWORD
@@ -28,7 +26,7 @@ const GivenAValidDistributionDataSet = {
       body: "<h1>This Is an IO test email</h1>"
     },
     {
-      from: DISTRIBUTION_EMAIl_ADDRESS,
+      from: DISTRIBUTION_EMAIL_ADDRESS,
       to: RECEIVER_TEST_EMAIL_ADDRESS,
       subject: "Tegint IO distribution",
       text: "This is the test text",
@@ -39,15 +37,18 @@ const GivenAValidDistributionDataSet = {
 
 describe(sut, function() {
   describe("Given valid ditribution parameters", function() {
-    it("should successfully dispatch all emails in colelction using ditrobution account", function() {
-      try {
-        let result = IO_EWC.send(
-          GivenAValidDistributionDataSet.account,
-          GivenAValidDistributionDataSet.emailCollection
-        );
-      } catch (error) {
-        console.log(error);
-      }
+    it("should successfully dispatch all emails in collection", function() {
+      IO_EWC.send(
+        GivenAValidDistributionDataSet.smtpAccount,
+        GivenAValidDistributionDataSet.emailCollection
+      )
+        .then(function(result) {
+          expect(result.length).to.equal(2);
+        })
+        .catch(ex => {
+          console.log(ex);
+          expect(ex).to.equal(null);
+        });
     });
   });
 });

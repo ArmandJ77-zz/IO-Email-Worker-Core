@@ -16,7 +16,7 @@ const GivenAValidDistributionDataSet = {
   emailCollection: [
     {
       from: DISTRIBUTION_EMAIL_ADDRESS,
-      to: RECEIVER_TEST_EMAIL_ADDRESS,
+      to: "s@s",
       subject: "Tegint IO distribution",
       text: "This is the test text",
       body: "<h1>This Is an IO test email</h1>"
@@ -34,7 +34,9 @@ const GivenAValidDistributionDataSet = {
 IO_EWC.send(
   GivenAValidDistributionDataSet.smtpAccount,
   GivenAValidDistributionDataSet.emailCollection
-).then(res => console.log(res));
+)
+  .then(res => console.log(res))
+  .catch(ex => console.log(ex));
 
 // console.log(DISTRIBUTION_EMAIL_ADDRESS);
 // console.log(DISTRIBUTION_EMAIL_PASSWORD);
