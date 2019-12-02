@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { GivenAValidDataSet } from "./testData/Data";
-import dataInjectionHandler from "../lib/dataInjectionHandler";
-import generationHandler from "../lib/generationHandler";
+import IO_EWC from "../index";
 
 const sut = "generationHandler";
 
@@ -12,10 +11,9 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let emailTemplate = leDataSet.data.emailTemplate;
 
-      let dataInjectionResult = dataInjectionHandler(rawData, emailTemplate);
+      let dataInjectionResult = IO_EWC.injectData(rawData, emailTemplate);
 
-      let result = generationHandler(dataInjectionResult.data);
-
+      let result = IO_EWC.generate(dataInjectionResult.data);
       expect(result.isSuccess).to.equal(true);
     });
   });

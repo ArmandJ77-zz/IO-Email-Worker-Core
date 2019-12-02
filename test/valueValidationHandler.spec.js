@@ -3,7 +3,7 @@ import {
   GivenAValidDataSet,
   GivenAnInValidDataSetWithBadValues
 } from "./testData/Data";
-import valueValidationHandler from "../lib/valueValidationHandler";
+import IO_EWC from "../index";
 
 const sut = "valueValidation";
 
@@ -13,7 +13,7 @@ describe(sut, function() {
       let rawData = GivenAValidDataSet.data.rawData;
       let dataTemplate = GivenAValidDataSet.data.dataTemplate.properties;
 
-      let result = valueValidationHandler(dataTemplate, rawData);
+      let result = IO_EWC.validateValues(dataTemplate, rawData);
 
       expect(result.isSuccess).to.equal(true);
       expect(result.errors.length).to.equal(0);
@@ -28,8 +28,7 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let dataTemplate = leDataSet.data.dataTemplate.properties;
 
-      let result = valueValidationHandler(dataTemplate, rawData);
-
+      let result = IO_EWC.validateValues(dataTemplate, rawData);
       expect(result.isSuccess).to.equal(false);
       expect(result.errors[0]).to.equal(
         "valueRequired check failed on node 0: Name value "

@@ -3,7 +3,7 @@ import {
   GivenAValidDataSet,
   GivenAnInValidDataSetWithMissingProperties
 } from "./testData/Data";
-import structureValidationHandler from "../lib/structureValidationHandler";
+import IO_EWC from "../index";
 
 const sut = "structureValidation";
 
@@ -15,8 +15,7 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let dataTemplate = leDataSet.data.dataTemplate.properties;
 
-      let result = structureValidationHandler(dataTemplate, rawData);
-
+      let result = IO_EWC.validateStructure(dataTemplate, rawData);
       result.forEach(response => {
         expect(response.isSuccess).to.equal(true);
         expect(response.errors).to.equal(null);
@@ -32,7 +31,7 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let dataTemplate = leDataSet.data.dataTemplate.properties;
 
-      let result = structureValidationHandler(dataTemplate, rawData);
+      let result = IO_EWC.validateStructure(dataTemplate, rawData);
 
       expect(result[0].isSuccess).to.equal(false);
       expect(result[0].errors).to.not.equal(null);

@@ -17,15 +17,13 @@ const GivenAValidDistributionDataSet = {
     {
       from: DISTRIBUTION_EMAIL_ADDRESS,
       to: "s@s",
-      subject: "Tegint IO distribution",
-      text: "This is the test text",
+      subject: "Testing IO distribution",
       body: "<h1>This Is an IO test email</h1>"
     },
     {
       from: DISTRIBUTION_EMAIL_ADDRESS,
       to: RECEIVER_TEST_EMAIL_ADDRESS,
-      subject: "Tegint IO distribution",
-      text: "This is the test text",
+      subject: "Testing IO distribution",
       body: "<h1>This Is an IO test email</h1>"
     }
   ]

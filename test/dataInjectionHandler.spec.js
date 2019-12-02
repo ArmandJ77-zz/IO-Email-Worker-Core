@@ -1,8 +1,6 @@
 import { expect } from "chai";
 import { GivenAValidDataSet } from "./testData/Data";
-import valueValidationHandler from "../lib/valueValidationHandler";
-import structureValidationHandler from "../lib/structureValidationHandler";
-import dataInjectionHandler from "../lib/dataInjectionHandler";
+import IO_EWC from "../index";
 
 const sut = "dataInjectionHandler";
 
@@ -14,7 +12,7 @@ describe(sut, function() {
       let dataTemplate = leDataSet.data.dataTemplate.properties;
       let emailTemplate = leDataSet.data.emailTemplate;
 
-      let structureValidationResponse = structureValidationHandler(
+      let structureValidationResponse = IO_EWC.validateStructure(
         dataTemplate,
         rawData
       );
@@ -23,14 +21,15 @@ describe(sut, function() {
         expect(response.errors).to.equal(null);
       });
 
-      let valueValidationHandlerResponse = valueValidationHandler(
+      let valueValidationHandlerResponse = IO_EWC.validateValues(
         dataTemplate,
         rawData
       );
       expect(valueValidationHandlerResponse.isSuccess).to.equal(true);
       expect(valueValidationHandlerResponse.errors.length).to.equal(0);
 
-      let result = dataInjectionHandler(rawData, emailTemplate);
+      let result = IO_EWC.injectData(rawData, emailTemplate);
+
       expect(result.isSuccess).to.equal(true);
     });
   });

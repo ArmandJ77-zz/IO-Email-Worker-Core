@@ -9,12 +9,18 @@ const IO_EWC = new (class {
   send = async (smtpAccount, emailOptionsCollection) =>
     distributionHandler(smtpAccount, emailOptionsCollection);
 
-  injectData = (rawData, template) => dataInjectionHandler(rawData, template);
-
-  generateAndSend = (rawData, properties, emailTemplate) =>
-    genAndSendHandler(rawData, properties, emailTemplate);
+  generateAndSend = async (
+    smtpAccount,
+    subject,
+    rawData,
+    properties,
+    emailTemplate
+  ) =>
+    genAndSendHandler(smtpAccount, subject, rawData, properties, emailTemplate);
 
   generate = enrighedTemplates => generationHandler(enrighedTemplates);
+
+  injectData = (rawData, template) => dataInjectionHandler(rawData, template);
 
   validateStructure = (dataTemplate, rawData) =>
     structureValidationHandler(dataTemplate, rawData);
