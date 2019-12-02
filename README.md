@@ -1,6 +1,6 @@
 # IO Email Worker Core
 
-This is a core library used by the IO-Email-Worker and IO-VSCode-Plugin for the parsing, conversion and sending of an mjml template as HTML to predefined smtp accounts using nodemailer.
+This is a core library used by the IO-Email-Worker and IO-Email-Worker-Utility for the parsing, conversion and sending of an mjml template as HTML to predefined smtp accounts using nodemailer.
 
 ## How to use
 
