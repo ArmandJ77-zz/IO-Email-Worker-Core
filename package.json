@@ -1,7 +1,7 @@
 {
   "_location": "/io-email-worker-core",
   "name": "io-email-worker-core",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "",
   "main": "index.js",
   "scripts": {
