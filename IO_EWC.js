@@ -6,9 +6,10 @@ const structureValidationHandler = require("./lib/structureValidationHandler");
 const valueValidationHandler = require("./lib/valueValidationHandler");
 
 module.exports = {
-  dataInjectionHandler,
-  distributionHandler,
-  generationHandler,
-  structureValidationHandler,
-  valueValidationHandler
+  injectDataIntoTemplate: dataInjectionHandler,
+  send: distributionHandler,
+  generateHtml: generationHandler,
+  validateStructureAgainstTemplate: structureValidationHandler,
+  validateValuesAgainstTypes: valueValidationHandler,
+  generateAndSend: genAndSendHandler
 };
