@@ -1,4 +1,5 @@
 {
+  "_location": "/io-email-worker-core",
   "name": "io-email-worker-core",
   "version": "1.4.2",
   "description": "",
@@ -40,6 +41,6 @@
     "mocha": "*",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
-    "io-email-worker-core": "^1.4.1"
+    "io-email-worker-core": "^1.4.2"
   }
 }

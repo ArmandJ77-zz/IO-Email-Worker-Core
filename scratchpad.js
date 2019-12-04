@@ -1,6 +1,6 @@
-import IO_EWC from "./index";
+// import IO_EWC from "./index";
 require("dotenv").config({ path: ".env" });
-// import IO_EWC from "io-email-worker-utility";
+import IO_EWC from "io-email-worker-utility/index.js";
 
 const RECEIVER_TEST_EMAIL_ADDRESS = process.env.RECEIVER_TEST_EMAIL_ADDRESS;
 const DISTRIBUTION_EMAIL_ADDRESS = process.env.DISTRIBUTION_EMAIL_ADDRESS;

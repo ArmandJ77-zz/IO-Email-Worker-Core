@@ -1,3 +1,5 @@
+module.exports = IO_EWC;
+
 import dataInjectionHandler from "./lib/dataInjectionHandler";
 import distributionHandler from "./lib/distributionHandler";
 import genAndSendHandler from "./lib/genAndSendHandler";
@@ -29,7 +31,6 @@ const IO_EWC = new (class IO_EWC {
     valueValidationHandler(dataTemplate, rawData);
 })();
 
-Object.freeze(IO_EWC);
+// Object.freeze(IO_EWC);
 
-module.exports = IO_EWC;
-export default IO_EWC;
+// export default IO_EWC;
