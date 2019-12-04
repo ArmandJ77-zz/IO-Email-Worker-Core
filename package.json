@@ -29,7 +29,6 @@
     "nodemailer": "^6.3.0"
   },
   "devDependencies": {
-    "jshint": "^2.10.2",
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
@@ -38,9 +37,9 @@
     "chai": "*",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
+    "jshint": "^2.10.2",
     "mocha": "*",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2",
-    "io-email-worker-core": "^1.4.2"
+    "prettier": "^1.18.2"
   }
 }
