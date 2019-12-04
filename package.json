@@ -39,6 +39,7 @@
     "eslint-config-prettier": "^6.4.0",
     "mocha": "*",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "io-email-worker-core": "^1.4.1"
   }
 }

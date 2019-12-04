@@ -5,9 +5,9 @@ import generationHandler from "./lib/generationHandler";
 import structureValidationHandler from "./lib/structureValidationHandler";
 import valueValidationHandler from "./lib/valueValidationHandler";
 
-const IO_EWC = new (class {
-  send = async (smtpAccount, emailOptionsCollection) =>
-    distributionHandler(smtpAccount, emailOptionsCollection);
+const IO_EWC = new (class IO_EWC {
+  send = async (smtpAccount, subject, emailOptionsCollection) =>
+    distributionHandler(smtpAccount, subject, emailOptionsCollection);
 
   generateAndSend = async (
     smtpAccount,
@@ -31,4 +31,5 @@ const IO_EWC = new (class {
 
 Object.freeze(IO_EWC);
 
+module.exports = IO_EWC;
 export default IO_EWC;
