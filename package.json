@@ -3,7 +3,7 @@
   "name": "io-email-worker-core",
   "version": "1.4.3",
   "description": "",
-  "main": "index.js",
+  "main": "IO_EWC.js",
   "scripts": {
     "start": "nodemon -r esm scratchpad.js",
     "test": "mocha --require esm"
