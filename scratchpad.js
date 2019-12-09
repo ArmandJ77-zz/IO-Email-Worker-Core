@@ -1,6 +1,6 @@
 // import IO_EWC from "./IO_EWC";
 require("dotenv").config({ path: ".env" });
-const IO_EWC = require("io-email-worker-utility");
+const IO_EWC = require("./IO_EWC");
 
 const RECEIVER_TEST_EMAIL_ADDRESS = process.env.RECEIVER_TEST_EMAIL_ADDRESS;
 const DISTRIBUTION_EMAIL_ADDRESS = process.env.DISTRIBUTION_EMAIL_ADDRESS;
@@ -30,7 +30,7 @@ const GivenAValidDistributionDataSet = {
   ]
 };
 
-let foo = console.log(IO_EWC.);
+console.log(IO_EWC.greeter("bar"));
 
 // IO_EWC.send(
 //   GivenAValidDistributionDataSet.smtpAccount,

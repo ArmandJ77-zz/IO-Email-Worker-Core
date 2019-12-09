@@ -1,9 +1,10 @@
 import { expect } from "chai";
 import {
   GivenAValidDataSet,
-  GivenAnInValidDataSetWithMissingProperties
+  GivenAnInValidDataSetWithMissingProperties,
+  GivenAnInValidDataSetWithIncorrectlyNamedProperties
 } from "./testData/Data";
-import IO_EWC from "../index";
+const IO_EWC = require("./../IO_EWC");
 
 const sut = "structureValidation";
 
@@ -15,7 +16,10 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let dataTemplate = leDataSet.data.dataTemplate.properties;
 
-      let result = IO_EWC.validateStructure(dataTemplate, rawData);
+      let result = IO_EWC.validateStructureAgainstTemplate(
+        dataTemplate,
+        rawData
+      );
       result.forEach(response => {
         expect(response.isSuccess).to.equal(true);
         expect(response.errors).to.equal(null);
@@ -31,7 +35,10 @@ describe(sut, function() {
       let rawData = leDataSet.data.rawData;
       let dataTemplate = leDataSet.data.dataTemplate.properties;
 
-      let result = IO_EWC.validateStructure(dataTemplate, rawData);
+      let result = IO_EWC.validateStructureAgainstTemplate(
+        dataTemplate,
+        rawData
+      );
 
       expect(result[0].isSuccess).to.equal(false);
       expect(result[0].errors).to.not.equal(null);
@@ -51,6 +58,35 @@ describe(sut, function() {
       expect(
         result[1].errors.includes("missing properties: Name,Age,HasCarInSpace")
       ).to.equal(true);
+    });
+  });
+});
+
+describe(sut, function() {
+  describe("Given An InValid DataSet With incorrectly names json nodes", function() {
+    it("should return a failed response per node detailing the missing nodes", function() {
+      let leDataSet = GivenAnInValidDataSetWithIncorrectlyNamedProperties;
+      let rawData = leDataSet.data.rawData;
+      let dataTemplate = leDataSet.data.dataTemplate.properties;
+
+      let result = IO_EWC.validateStructureAgainstTemplate(
+        dataTemplate,
+        rawData
+      );
+
+      expect(result.length).to.equal(2);
+
+      expect(result[0].isSuccess).to.equal(false);
+      expect(result[0].errors).to.equal(
+        'Diff found on: {"Name":"Elon","lastname":"Musk","Age":48,"Email":"rocketman9000@marsmail.com","HasCarInSpace":"true","DOB":"1971-06-28"} \n' +
+          " missing properties: Surname"
+      );
+
+      expect(result[1].isSuccess).to.equal(false);
+      expect(result[1].errors).to.equal(
+        'Diff found on: {"Name":"Jeff","Surname":"Bezos","Age":55,"Email":"jungleking@amazon.com","hcis":"false","DOB":"1964-01-12"} \n' +
+          " missing properties: HasCarInSpace"
+      );
     });
   });
 });
