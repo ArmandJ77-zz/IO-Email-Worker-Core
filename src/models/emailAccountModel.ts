@@ -1,4 +1,4 @@
-export default interface emailAccountModel {
+export default interface EmailAccountModel {
   provider: string;
   fromAddress: string;
   fromAddressPassword: string;

@@ -1,1 +1,6 @@
-export default interface MetaDataModel {}
+import EmailAccountModel from "./emailAccountModel";
+
+export default interface MetaDataModel {
+  EmailAccount: EmailAccountModel;
+  Subject: string;
+}
