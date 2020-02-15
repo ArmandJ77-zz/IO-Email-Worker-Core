@@ -31,6 +31,7 @@ const genAndSendHandler = async (
         reject(Error(result.errors));
       }
     });
+
     // STEP 2: VALUE VALIDATION
     let valueValidationResult = valueValidationHandler(properties, rawData);
     if (!valueValidationResult.isSuccess)
@@ -39,6 +40,7 @@ const genAndSendHandler = async (
     // STEP 3: DATA INJECTION
     let enrichedTemplates = dataInjectionHandler(rawData, emailTemplate);
     if (!enrichedTemplates.isSuccess) reject(Error(enrichedTemplates.errors));
+
     // STEP 4: GENERATION
     let parsedEmailObjects = generationHandler(enrichedTemplates.data);
     if (!parsedEmailObjects.isSuccess) reject(Error(parsedEmailObjects.error));

@@ -20,7 +20,7 @@ describe(sut, function() {
         dataTemplate,
         rawData
       );
-      result.forEach(response => {
+      // result.forEach(response => {
         expect(response.isSuccess).to.equal(true);
         expect(response.errors).to.equal(null);
       });
