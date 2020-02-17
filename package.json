@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc --w",
     "start": "tsc && ts-node ./dist/index.js",
-    "test": "mocha --require esm"
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "handlebars": "^4.7.3",
+    "lodash": "^4.17.15",
     "mjml": "^4.4.0",
     "moment": "^2.24.0",
     "nodemailer": "^6.3.0"
@@ -40,6 +41,7 @@
     "@types/concurrently": "^5.1.0",
     "@types/esm": "^3.2.0",
     "@types/handlebars": "^4.1.0",
+    "@types/lodash": "^4.14.149",
     "@types/mjml": "^4.0.3",
     "@types/mocha": "^7.0.1",
     "@types/moment": "^2.13.0",
@@ -51,6 +53,8 @@
     "mocha": "*",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
-    "tslint-config-prettier": "^1.18.0"
+    "ts-node": "^8.6.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   }
 }

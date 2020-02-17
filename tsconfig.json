@@ -1,10 +1,18 @@
 {
   "compilerOptions": {
     "outDir": "./lib",
-    "moduleResolution": "Node",
-    "module": "CommonJS",
-    "allowJs": true,
-    "target": "ES6"
+    "allowJs": false,
+    "target": "ES6",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "sourceMap": false,
+    "listEmittedFiles": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*", "index.ts"]
+  "include": ["src/**/*", "index.ts", "tests/*.test.*"],
+  "exclude": ["node_modules"]
 }

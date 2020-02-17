@@ -1,43 +1,43 @@
-const handlebars = require("handlebars");
+// const handlebars = require("handlebars");
 
-const dataInjectionHandler = (rawData, template) => {
-  let enrichedTemplates = [];
-  let errors = [];
+// const dataInjectionHandler = (rawData, template) => {
+//   let enrichedTemplates = [];
+//   let errors = [];
 
-  for (let i = 0; i < rawData.length; i++) {
-    try {
-      let hbsTemplate = handlebars.compile(template);
+//   for (let i = 0; i < rawData.length; i++) {
+//     try {
+//       let hbsTemplate = handlebars.compile(template);
 
-      let enrichedTemplate = hbsTemplate(rawData[i]);
+//       let enrichedTemplate = hbsTemplate(rawData[i]);
 
-      let enrichedTemplateObject = {
-        rawDataIndex: i,
-        to: rawData[i].Email,
-        html: enrichedTemplate
-      };
+//       let enrichedTemplateObject = {
+//         rawDataIndex: i,
+//         to: rawData[i].Email,
+//         html: enrichedTemplate
+//       };
 
-      enrichedTemplates.push(enrichedTemplateObject);
-    } catch (err) {
-      errors.push({
-        rawDataIndex: i,
-        rawData: JSON.stringify(rawData[i]),
-        template: template,
-        error: JSON.stringify(err)
-      });
-    }
-  }
+//       enrichedTemplates.push(enrichedTemplateObject);
+//     } catch (err) {
+//       errors.push({
+//         rawDataIndex: i,
+//         rawData: JSON.stringify(rawData[i]),
+//         template: template,
+//         error: JSON.stringify(err)
+//       });
+//     }
+//   }
 
-  let response = buildResponse(enrichedTemplates, errors);
+//   let response = buildResponse(enrichedTemplates, errors);
 
-  return response;
-};
+//   return response;
+// };
 
-function buildResponse(enrichedTemplates, errors) {
-  return {
-    isSuccess: errors.length > 0 ? false : true,
-    data: enrichedTemplates,
-    errors: errors
-  };
-}
+// function buildResponse(enrichedTemplates, errors) {
+//   return {
+//     isSuccess: errors.length > 0 ? false : true,
+//     data: enrichedTemplates,
+//     errors: errors
+//   };
+// }
 
-module.exports = dataInjectionHandler;
+// module.exports = dataInjectionHandler;
