@@ -1,14 +1,16 @@
-export const GetMappedValue = (obj: any, key: string) => {
+export const GetValueByKey = (obj: any, key: string) => {
   for (let prop in obj) {
     if (prop == key) return obj[prop];
   }
 };
 
-export const GetMappedValuesFromArray = (objs, key) => {
-  let results = [];
+export const GetValuesByKey = (objs: Array<any>, key: string) => {
+  let results = <any>[];
+
   for (let i = 0; i < objs.length; i++) {
-    let p = GetMappedValue(objs[i], key);
+    let p = <any>GetValueByKey(objs[i], key);
     results.push(p);
   }
+
   return results;
 };
