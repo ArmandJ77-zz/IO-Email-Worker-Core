@@ -1,3 +1,3 @@
 export default interface inputDataModel {
-  InputData: Array<any>;
+  Data: Array<any>;
 }
