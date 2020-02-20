@@ -8,7 +8,6 @@ import {
   GivenAnInValidDataSetWithMissingProperties,
   GivenAnInValidDataSetWithIncorrectlyNamedProperties
 } from "./testData/Data";
-import { isImportOrExportSpecifier } from "typescript";
 
 const expect = chai.expect;
 
@@ -19,19 +18,81 @@ describe(sut, function() {
     it("should return a succesful validation", function() {
       let leDataSet = GivenAValidDataSet;
 
-      //   console.log(JSON.stringify(leDataSet.data.rawData));
       let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
-      //   console.log(JSON.stringify(inputData));
 
-      //   console.log(JSON.stringify(leDataSet.data.DataTemplate));
       let dataProperties = <DataPropertiesModel>(
         (<unknown>leDataSet.data.DataTemplate)
       );
-      //   console.log(JSON.stringify(dataProperties));
 
       let handler = new StructureValidationHandler();
+
       let result = handler.ValidateStructure(dataProperties, inputData);
-      expect(true).to.equal(true);
+
+      expect(result[0].IsValid).to.equal(true);
+      expect(result[0].Error).to.equal(null);
+      expect(result[0].InputDataIndex).to.equal(0);
+
+      expect(result[1].IsValid).to.equal(true);
+      expect(result[1].Error).to.equal(null);
+      expect(result[1].InputDataIndex).to.equal(1);
+    });
+  });
+});
+
+describe(sut, function() {
+  describe("Given An Invalid DataSet With Missing Properties", function() {
+    it("should return a list of failed responses", function() {
+      let leDataSet = GivenAnInValidDataSetWithMissingProperties;
+
+      let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
+
+      let dataProperties = <DataPropertiesModel>(
+        (<unknown>leDataSet.data.DataTemplate)
+      );
+
+      let handler = new StructureValidationHandler();
+
+      let result = handler.ValidateStructure(dataProperties, inputData);
+
+      expect(result[0].IsValid).to.equal(false);
+      expect(result[0].Error).to.equal(
+        "Input data mismatched with Data Template properties on: Surname"
+      );
+      expect(result[0].InputDataIndex).to.equal(0);
+
+      expect(result[1].IsValid).to.equal(false);
+      expect(result[1].Error).to.equal(
+        "Input data mismatched with Data Template properties on: Email"
+      );
+      expect(result[1].InputDataIndex).to.equal(1);
+    });
+  });
+});
+
+describe(sut, function() {
+  describe("Given An InValid DataSet With Incorrectly Named Properties", function() {
+    it("should return a list of failed responses", function() {
+      let leDataSet = GivenAnInValidDataSetWithIncorrectlyNamedProperties;
+
+      let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
+
+      let dataProperties = <DataPropertiesModel>(
+        (<unknown>leDataSet.data.DataTemplate)
+      );
+
+      let handler = new StructureValidationHandler();
+
+      let result = handler.ValidateStructure(dataProperties, inputData);
+
+      expect(result[0].IsValid).to.equal(true);
+      expect(result[0].Error).to.equal(null);
+      expect(result[0].InputDataIndex).to.equal(0);
+
+      expect(result[1].IsValid).to.equal(false);
+      expect(result[1].Error).to.equal(
+        "Input data mismatched with Data Template properties on: Email,Name,Surname,Age,HasCarInSpace,DOB"
+      );
+      expect(result[1].InputDataIndex).to.equal(1);
     });
   });
 });
