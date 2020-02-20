@@ -11,7 +11,8 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictNullChecks": true
   },
   "include": ["src/**/*", "index.ts", "tests/*.test.*"],
   "exclude": ["node_modules"]
