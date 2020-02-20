@@ -1,29 +1,42 @@
-import inputDataModel from "./models/inputDataModel";
-import dataPropertiesModel from "./models/dataPropertiesModel";
+import InputDataModel from "./models/inputDataModel";
+import DataPropertiesModel from "./models/dataPropertiesModel";
+import { sortBy, isEqual, difference } from "lodash";
+import structureValidationResponse from "./responses/structureValidationResponse";
 
 export default class StructureValidationHandler {
   constructor() {}
 
   ValidateStructure(
-    dataPropertiesModel: dataPropertiesModel,
-    inputDataModel: inputDataModel
-  ) {
-    let dataPropertyKeys = dataPropertiesModel.Properties.map(x => x.Name);
-    // let inputDataKeys = inputDataModel.InputData.map(x => x.keys);
-    console.log(inputDataModel);
+    dataPropertiesModel: DataPropertiesModel,
+    inputDataModel: InputDataModel
+  ): Array<structureValidationResponse> {
+    let results = new Array<structureValidationResponse>();
+    let dataPropertiesList = dataPropertiesModel.Properties.map(x => x.Name);
 
-    // console.log(
-    //   `Data Property: ${JSON.stringify(dataProperties.properties[0])}`
-    // );
-    // console.log(`Data Property: ${dataProperties.properties[0].Name}`);
-    // console.log(`Data Property: ${dataProperties.properties[0].Validation}`);
-    // console.log(``);
-    // console.log(
-    //   `data properties ${JSON.stringify(dataProperties.properties.length)}`
-    // );
-    // console.log(`data properties ${JSON.stringify(dataPropertyKeys.length)}`);
-    // console.log(`data properties ${JSON.stringify(dataPropertyKeys)}`);
-    // let inputDataKeys = inputData.data.keys();
-    // console.log(`inputDataKeys: ${inputData}`);
+    for (let i = 0; i < inputDataModel.Data.length; i++) {
+      let rawDataEntryProps = Object.keys(inputDataModel.Data[i]);
+
+      let isEqualResult = isEqual(
+        sortBy(dataPropertiesList),
+        sortBy(rawDataEntryProps)
+      );
+
+      if (isEqualResult) {
+        results.push(new structureValidationResponse(i, isEqualResult, null));
+        continue;
+      }
+
+      let differenceResult = difference(dataPropertiesList, rawDataEntryProps);
+
+      results.push(
+        new structureValidationResponse(
+          i,
+          isEqualResult,
+          `Input data mismatched with Data Template properties on: ${differenceResult}`
+        )
+      );
+    }
+
+    return results;
   }
 }
