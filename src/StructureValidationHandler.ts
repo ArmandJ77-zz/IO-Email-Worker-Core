@@ -1,7 +1,7 @@
 import InputDataModel from "./models/inputDataModel";
 import DataPropertiesModel from "./models/dataPropertiesModel";
 import { sortBy, isEqual, difference } from "lodash";
-import structureValidationResponse from "./responses/structureValidationResponse";
+import ValidationResponse from "./responses/validationResponse";
 
 export default class StructureValidationHandler {
   constructor() {}
@@ -9,8 +9,8 @@ export default class StructureValidationHandler {
   ValidateStructure(
     dataPropertiesModel: DataPropertiesModel,
     inputDataModel: InputDataModel
-  ): Array<structureValidationResponse> {
-    let results = new Array<structureValidationResponse>();
+  ): Array<ValidationResponse> {
+    let results = new Array<ValidationResponse>();
     let dataPropertiesList = dataPropertiesModel.Properties.map(x => x.Name);
 
     for (let i = 0; i < inputDataModel.Data.length; i++) {
@@ -22,14 +22,14 @@ export default class StructureValidationHandler {
       );
 
       if (isEqualResult) {
-        results.push(new structureValidationResponse(i, isEqualResult, null));
+        results.push(new ValidationResponse(i, isEqualResult, null));
         continue;
       }
 
       let differenceResult = difference(dataPropertiesList, rawDataEntryProps);
 
       results.push(
-        new structureValidationResponse(
+        new ValidationResponse(
           i,
           isEqualResult,
           `Input data mismatched with Data Template properties on: ${differenceResult}`

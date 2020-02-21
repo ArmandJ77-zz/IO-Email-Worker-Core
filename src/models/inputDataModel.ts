@@ -1,3 +1,3 @@
-export default interface inputDataModel {
+export default interface InputDataModel {
   Data: Array<any>;
 }

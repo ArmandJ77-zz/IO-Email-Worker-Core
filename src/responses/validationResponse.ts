@@ -1,4 +1,4 @@
-export default class StructureValidationResponse {
+export default class ValidationResponse {
   private _inputDataIndex: number;
   public get InputDataIndex(): number {
     return this._inputDataIndex;
