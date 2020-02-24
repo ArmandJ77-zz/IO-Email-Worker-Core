@@ -6,7 +6,8 @@ import "mocha";
 import {
   GivenAValidDataSet,
   GivenAnInValidDataSetWithMissingProperties,
-  GivenAnInValidDataSetWithIncorrectlyNamedProperties
+  GivenAnInValidDataSetWithIncorrectlyNamedProperties,
+  GivenAnInValidDataSetWithMissingInputDataValues
 } from "./testData/Data";
 
 const expect = chai.expect;
@@ -14,9 +15,9 @@ const expect = chai.expect;
 const sut = "ValueValidation";
 
 describe(sut, function() {
-  describe("Given A Valid DataSet", function() {
-    it("should return a succesful validation", function() {
-      let leDataSet = GivenAValidDataSet;
+  describe("Given An InValid DataSet With Missing Input Data Values", function() {
+    it("should return a list of validation failed responses", function() {
+      let leDataSet = GivenAnInValidDataSetWithMissingInputDataValues;
 
       let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
 
@@ -26,7 +27,15 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let result = handler.ValidateValues(dataProperties, inputData);
+      let results = handler.ValidateValues(
+        dataProperties.Properties,
+        inputData.Data
+      );
+
+      // results.forEach(result => {
+      //   expect(result.IsValid).to.equal(false);
+
+      // });
     });
   });
 });

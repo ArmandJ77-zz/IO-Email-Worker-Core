@@ -3,5 +3,6 @@ export const enum ValidationTypes {
   string,
   number,
   bool,
-  date
+  date,
+  valueRequired
 }

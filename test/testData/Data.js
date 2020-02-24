@@ -80,7 +80,7 @@ const GivenAValidDataSet = {
   }
 };
 
-const GivenAnInValidDataSetWithBadValues = {
+const GivenAnInValidDataSetWithMissingInputDataValues = {
   data: {
     MetaData: {
       EmailAccount: {
@@ -142,8 +142,8 @@ const GivenAnInValidDataSetWithBadValues = {
     InputData: {
       Data: [
         {
-          Name: "Elon",
-          Surname: "Musk",
+          Name: "",
+          Surname: null,
           Age: 48,
           Email: "rocketman9000@marsmail.com",
           HasCarInSpace: "true",
@@ -326,7 +326,7 @@ const GivenAnInValidDataSetWithIncorrectlyNamedProperties = {
 
 module.exports = {
   GivenAValidDataSet,
-  GivenAnInValidDataSetWithBadValues,
   GivenAnInValidDataSetWithMissingProperties,
-  GivenAnInValidDataSetWithIncorrectlyNamedProperties
+  GivenAnInValidDataSetWithIncorrectlyNamedProperties,
+  GivenAnInValidDataSetWithMissingInputDataValues
 };
