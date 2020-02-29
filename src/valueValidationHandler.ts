@@ -89,19 +89,19 @@ export default class ValueValidation {
             )
           );
         break;
-        // case "number":
-        //   if (!this.isNumberValid(value))
-        //     return new ValidationResponse(
-        //       inputDataIndex,
-        //       false,
-        //       this.buildValidationMessage(
-        //         ValidationTypes.number,
-        //         inputDataIndex,
-        //         key,
-        //         value
-        //       )
-        //     );
-        //   break;
+      case "number":
+        if (!this.isValidNumber(value))
+          return new ValidationResponse(
+            inputDataIndex,
+            false,
+            this.buildValidationMessage(
+              ValidationTypes.number,
+              inputDataIndex,
+              key,
+              value
+            )
+          );
+        break;
         // case "bool":
         //   if (!this.isBooleanValid(value))
         //     return new ValidationResponse(
@@ -149,8 +149,8 @@ export default class ValueValidation {
   private isInvalidString = val => /^\s*$|null|NULL/.test(val);
   private isEmptyString = val => /^\s*$/.test(val);
 
-  private isNumberValid = val =>
-    !val || /^(?!-0(\.0+)?$)-?(0|[1-9]\d*)(\.\d+)?$/.test(val);
+  private isValidNumber = val =>
+    /^(?!-0(\.0+)?$)-?(0|[1-9]\d*)(\.\d+)?$/.test(val);
   private isBooleanValid = val => !val || /^(true|false|1|0)$/.test(val);
   private isDateValid = (val, format) => moment(val, format).isValid();
   private isEmailValid = val =>
