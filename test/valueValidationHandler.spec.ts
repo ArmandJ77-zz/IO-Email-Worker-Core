@@ -8,7 +8,8 @@ import {
   GivenAnInValidDataSetWithMissingProperties,
   GivenAnInValidDataSetWithIncorrectlyNamedProperties,
   GivenAnInValidDataSetWithMissingInputDataValues,
-  GivenAnInValidDataSetWithIncorrectEmailValues
+  GivenAnInValidDataSetWithIncorrectEmailValues,
+  GivenAnInValidDataSetWithIncorrectStringValues
 } from "./testData/Data";
 
 const expect = chai.expect;
@@ -32,9 +33,10 @@ describe(sut, function() {
         dataProperties.Properties,
         inputData.Data
       );
-      console.log(results.length);
 
-      results.forEach(result => {
+      const testResults = results.filter(x => x.IsValid === false);
+      expect(testResults.length).to.equal(6);
+      testResults.forEach(result => {
         expect(result.IsValid).to.equal(false);
       });
     });
@@ -61,6 +63,32 @@ describe(sut, function() {
 
       testResults.forEach(result => {
         expect(result.Error).to.contain("email check failed");
+      });
+    });
+
+    it("should return a list of validation failed responses where strings aren't valid", function() {
+      let leDataSet = GivenAnInValidDataSetWithIncorrectStringValues;
+
+      let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
+      let dataProperties = <DataPropertiesModel>(
+        (<unknown>leDataSet.data.DataTemplate)
+      );
+
+      let handler = new ValueValidationHandler();
+
+      let results = handler.ValidateValues(
+        dataProperties.Properties,
+        inputData.Data
+      );
+
+      // console.log(results);
+
+      const testResults = results.filter(x => x.IsValid === false);
+      console.log(testResults);
+
+      expect(testResults.length).to.equal(6);
+      testResults.forEach(result => {
+        expect(result.Error).to.contain("string check failed");
       });
     });
   });
