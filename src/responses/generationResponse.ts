@@ -6,8 +6,8 @@ export default class GenerationResponse {
     return this._isSuccess;
   }
 
-  private _errorMessage: string;
-  get ErrorMessage(): string {
+  private _errorMessage: string | null;
+  get ErrorMessage(): string | null {
     return this._errorMessage;
   }
 
@@ -18,7 +18,7 @@ export default class GenerationResponse {
 
   constructor(
     isSuccess: boolean,
-    errorMessage: string,
+    errorMessage: string | null,
     validationResponses: Array<ValidationResponse>
   ) {
     this._isSuccess = isSuccess;
