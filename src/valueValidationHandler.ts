@@ -26,17 +26,9 @@ export default class ValueValidation {
           dataTemplateProps[dtpi].Name,
           inputDataValidator
         );
-        // console.log(response);
         result.push(response);
-        // console.log(response);
       }
     }
-
-    // console.log("dataTemplateProperties: " + dataTemplateProperties);
-
-    // console.log(dataPropertiesModel);
-    // console.log(inputDataModel);
-    console.log("iteration done: " + result.length);
     return result;
   }
 
@@ -138,17 +130,8 @@ export default class ValueValidation {
     return new ValidationResponse(inputDataIndex, true, "");
   }
 
-  private buildValidationMessage = (
-    validationType: ValidationTypes,
-    nodeIndex: number,
-    onKey: string,
-    withValueOf: any
-  ) =>
-    `${validationType} check failed on node ${nodeIndex}: ${onKey} value ${withValueOf}`;
-
   private isInvalidString = val => /^\s*$|null|NULL/.test(val);
   private isEmptyString = val => /^\s*$/.test(val);
-
   private isValidNumber = val =>
     /^(?!-0(\.0+)?$)-?(0|[1-9]\d*)(\.\d+)?$/.test(val);
   private isBooleanValid = val => /^(true|false|1|0)$/.test(val);
@@ -158,4 +141,12 @@ export default class ValueValidation {
     /^((([a-z]|d|[!#$%&'*+-/=?^_`{|}~]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])+(.([a-z]|d|[!#$%&'*+-/=?^_`{|}~]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])+)*)|((x22)((((x20|x09)*(x0dx0a))?(x20|x09)+)?(([x01-x08x0bx0cx0e-x1fx7f]|x21|[x23-x5b]|[x5d-x7e]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])|(([x01-x09x0bx0cx0d-x7f]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF]))))*(((x20|x09)*(x0dx0a))?(x20|x09)+)?(x22)))@((([a-z]|d|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])|(([a-z]|d|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])([a-z]|d|-||_|~|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])*([a-z]|d|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF]))).)+(([a-z]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])+|(([a-z]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])+([a-z]+|d|-|.{0,1}|_|~|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])?([a-z]|[u00A0-uD7FFuF900-uFDCFuFDF0-uFFEF])))$/.test(
       val
     );
+
+  private buildValidationMessage = (
+    validationType: ValidationTypes,
+    nodeIndex: number,
+    onKey: string,
+    withValueOf: any
+  ) =>
+    `${validationType} check failed on node ${nodeIndex}: ${onKey} value ${withValueOf}`;
 }
