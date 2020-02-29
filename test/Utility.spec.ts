@@ -17,9 +17,7 @@ describe(sut, function() {
       expect(result).to.equal("bar");
     });
   });
-});
 
-describe(sut, function() {
   describe("Get values from array by key", function() {
     it("Should return a list of property values from an array of objects by key", function() {
       const testData = [

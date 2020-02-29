@@ -11,7 +11,7 @@ import {
 
 const expect = chai.expect;
 
-const sut = "structureValidation";
+const sut = "StructureValidationHandler";
 
 describe(sut, function() {
   describe("Given A Valid DataSet", function() {
@@ -37,9 +37,7 @@ describe(sut, function() {
       expect(result[1].InputDataIndex).to.equal(1);
     });
   });
-});
 
-describe(sut, function() {
   describe("Given An Invalid DataSet With Missing Properties", function() {
     it("should return a list of failed responses", function() {
       let leDataSet = GivenAnInValidDataSetWithMissingProperties;
@@ -67,9 +65,7 @@ describe(sut, function() {
       expect(result[1].InputDataIndex).to.equal(1);
     });
   });
-});
 
-describe(sut, function() {
   describe("Given An InValid DataSet With Incorrectly Named Properties", function() {
     it("should return a list of failed responses", function() {
       let leDataSet = GivenAnInValidDataSetWithIncorrectlyNamedProperties;
