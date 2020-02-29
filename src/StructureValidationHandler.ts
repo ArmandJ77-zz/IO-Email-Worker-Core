@@ -6,7 +6,7 @@ import ValidationResponse from "./responses/validationResponse";
 export default class StructureValidationHandler {
   constructor() {}
 
-  ValidateStructure(
+  Validate(
     dataPropertiesModel: DataPropertiesModel,
     inputDataModel: InputDataModel
   ): Array<ValidationResponse> {

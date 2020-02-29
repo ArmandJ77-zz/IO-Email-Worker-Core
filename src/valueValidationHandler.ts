@@ -8,7 +8,7 @@ import moment from "moment";
 export default class ValueValidation {
   constructor() {}
 
-  ValidateValues(
+  Validate(
     dataTemplateProps: Array<DataProperty>,
     inputDataProps: Array<any>
   ): Array<ValidationResponse> {
@@ -20,7 +20,7 @@ export default class ValueValidation {
           inputDataProps[idp][dataTemplateProps[dtpi].Name];
         const inputDataValidator = dataTemplateProps[dtpi].Validation;
 
-        let response = this.Validate(
+        let response = this.ValidateValues(
           dtpi,
           inputDataValue,
           dataTemplateProps[dtpi].Name,
@@ -32,7 +32,7 @@ export default class ValueValidation {
     return result;
   }
 
-  Validate(
+  private ValidateValues(
     inputDataIndex: number,
     value: any,
     key: string,

@@ -29,10 +29,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
       expect(testResults.length).to.equal(6);
@@ -51,10 +48,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
       expect(testResults.length).to.equal(4);
@@ -74,10 +68,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
 
@@ -97,10 +88,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
       expect(testResults.length).to.equal(2);
@@ -119,10 +107,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
 
@@ -142,10 +127,7 @@ describe(sut, function() {
 
       let handler = new ValueValidationHandler();
 
-      let results = handler.ValidateValues(
-        dataProperties.Properties,
-        inputData.Data
-      );
+      let results = handler.Validate(dataProperties.Properties, inputData.Data);
 
       const testResults = results.filter(x => x.IsValid === false);
       expect(testResults.length).to.equal(3);
@@ -155,3 +137,4 @@ describe(sut, function() {
     });
   });
 });
+``;

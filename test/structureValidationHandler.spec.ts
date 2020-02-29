@@ -26,7 +26,7 @@ describe(sut, function() {
 
       let handler = new StructureValidationHandler();
 
-      let result = handler.ValidateStructure(dataProperties, inputData);
+      let result = handler.Validate(dataProperties, inputData);
 
       expect(result[0].IsValid).to.equal(true);
       expect(result[0].Error).to.equal(null);
@@ -52,7 +52,7 @@ describe(sut, function() {
 
       let handler = new StructureValidationHandler();
 
-      let result = handler.ValidateStructure(dataProperties, inputData);
+      let result = handler.Validate(dataProperties, inputData);
 
       expect(result[0].IsValid).to.equal(false);
       expect(result[0].Error).to.equal(
@@ -82,7 +82,7 @@ describe(sut, function() {
 
       let handler = new StructureValidationHandler();
 
-      let result = handler.ValidateStructure(dataProperties, inputData);
+      let result = handler.Validate(dataProperties, inputData);
 
       expect(result[0].IsValid).to.equal(true);
       expect(result[0].Error).to.equal(null);
