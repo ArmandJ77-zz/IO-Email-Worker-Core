@@ -8,7 +8,8 @@ import {
   GivenAnInValidDataSetWithIncorrectEmailValues,
   GivenAnInValidDataSetWithIncorrectStringValues,
   GivenAnInValidDataSetWithIncorrectNumericsValues,
-  GivenAnInValidDataSetWithIncorrectBooleanValues
+  GivenAnInValidDataSetWithIncorrectBooleanValues,
+  GivenAnInValidDataSetWithIncorrectsDateValues
 } from "./testData/Data";
 
 const expect = chai.expect;
@@ -128,6 +129,28 @@ describe(sut, function() {
       expect(testResults.length).to.equal(1);
       testResults.forEach(result => {
         expect(result.Error).to.contain("boolean check failed");
+      });
+    });
+
+    it("should return a list of validation failed responses where dates aren't valid", function() {
+      let leDataSet = GivenAnInValidDataSetWithIncorrectsDateValues;
+
+      let inputData = <InputDataModel>(<unknown>leDataSet.data.InputData);
+      let dataProperties = <DataPropertiesModel>(
+        (<unknown>leDataSet.data.DataTemplate)
+      );
+
+      let handler = new ValueValidationHandler();
+
+      let results = handler.ValidateValues(
+        dataProperties.Properties,
+        inputData.Data
+      );
+
+      const testResults = results.filter(x => x.IsValid === false);
+      expect(testResults.length).to.equal(3);
+      testResults.forEach(result => {
+        expect(result.Error).to.contain("date check failed");
       });
     });
   });

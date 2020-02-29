@@ -115,23 +115,23 @@ export default class ValueValidation {
             )
           );
         break;
-        // case "date":
-        //   if (
-        //     !this.isDateValid(
-        //       value,
-        //       (validationRule as DateValidationModel).format
-        //     )
-        //   )
-        //     return new ValidationResponse(
-        //       inputDataIndex,
-        //       false,
-        //       this.buildValidationMessage(
-        //         ValidationTypes.date,
-        //         inputDataIndex,
-        //         key,
-        //         value
-        //       )
-        //     );
+      case "date":
+        if (
+          !this.isDateValid(
+            value,
+            (validationRule as DateValidationModel).format
+          )
+        )
+          return new ValidationResponse(
+            inputDataIndex,
+            false,
+            this.buildValidationMessage(
+              ValidationTypes.date,
+              inputDataIndex,
+              key,
+              value
+            )
+          );
         break;
     }
 
