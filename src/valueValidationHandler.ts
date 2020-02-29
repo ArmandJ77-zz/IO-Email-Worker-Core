@@ -47,8 +47,8 @@ export default class ValueValidation {
     validationRule: ValidationModel | DateValidationModel
   ): ValidationResponse {
     if (validationRule.ValueRequired) {
-      const isInvalidStringResult = this.isInvalidString(value);
-      if (isInvalidStringResult) {
+      const isEmptyStringResult = this.isEmptyString(value);
+      if (isEmptyStringResult) {
         return new ValidationResponse(
           inputDataIndex,
           false,
@@ -76,19 +76,19 @@ export default class ValueValidation {
             )
           );
         break;
-        // case "string":
-        //   if (!this.isStringValid(value))
-        //     return new ValidationResponse(
-        //       inputDataIndex,
-        //       false,
-        //       this.buildValidationMessage(
-        //         ValidationTypes.string,
-        //         inputDataIndex,
-        //         key,
-        //         value
-        //       )
-        //     );
-        //   break;
+      case "string":
+        if (this.isInvalidString(value))
+          return new ValidationResponse(
+            inputDataIndex,
+            false,
+            this.buildValidationMessage(
+              ValidationTypes.string,
+              inputDataIndex,
+              key,
+              value
+            )
+          );
+        break;
         // case "number":
         //   if (!this.isNumberValid(value))
         //     return new ValidationResponse(
@@ -147,6 +147,8 @@ export default class ValueValidation {
     `${validationType} check failed on node ${nodeIndex}: ${onKey} value ${withValueOf}`;
 
   private isInvalidString = val => /^\s*$|null|NULL/.test(val);
+  private isEmptyString = val => /^\s*$/.test(val);
+
   private isNumberValid = val =>
     !val || /^(?!-0(\.0+)?$)-?(0|[1-9]\d*)(\.\d+)?$/.test(val);
   private isBooleanValid = val => !val || /^(true|false|1|0)$/.test(val);
