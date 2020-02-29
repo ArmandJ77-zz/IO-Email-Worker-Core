@@ -102,19 +102,19 @@ export default class ValueValidation {
             )
           );
         break;
-        // case "bool":
-        //   if (!this.isBooleanValid(value))
-        //     return new ValidationResponse(
-        //       inputDataIndex,
-        //       false,
-        //       this.buildValidationMessage(
-        //         ValidationTypes.bool,
-        //         inputDataIndex,
-        //         key,
-        //         value
-        //       )
-        //     );
-        //   break;
+      case "boolean":
+        if (!this.isBooleanValid(value))
+          return new ValidationResponse(
+            inputDataIndex,
+            false,
+            this.buildValidationMessage(
+              ValidationTypes.bool,
+              inputDataIndex,
+              key,
+              value
+            )
+          );
+        break;
         // case "date":
         //   if (
         //     !this.isDateValid(
@@ -151,7 +151,7 @@ export default class ValueValidation {
 
   private isValidNumber = val =>
     /^(?!-0(\.0+)?$)-?(0|[1-9]\d*)(\.\d+)?$/.test(val);
-  private isBooleanValid = val => !val || /^(true|false|1|0)$/.test(val);
+  private isBooleanValid = val => /^(true|false|1|0)$/.test(val);
   private isDateValid = (val, format) => moment(val, format).isValid();
   private isEmailValid = val =>
     !val ||
