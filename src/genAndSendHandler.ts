@@ -21,6 +21,9 @@ export default class GenAndSendHandler {
       inputDataModel
     );
 
-    // const valueValidationResults = this._valueValidationHandler.Validate();
+    const valueValidationResults = this._valueValidationHandler.Validate(
+      dataPropertiesModel,
+      inputDataModel
+    );
   }
 }

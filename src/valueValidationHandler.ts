@@ -1,29 +1,31 @@
-import DataProperty from "./models/dataPropertyModel";
 import ValidationModel from "./models/validationModel";
 import DateValidationModel from "./models/dateValidationmodel";
 import ValidationResponse from "./responses/validationResponse";
 import { ValidationTypes } from "./enums/validationTypes";
 import moment from "moment";
+import DataPropertiesModel from "./models/dataPropertiesModel";
+import InputDataModel from "./models/inputDataModel";
 
 export default class ValueValidation {
   constructor() {}
 
   Validate(
-    dataTemplateProps: Array<DataProperty>,
-    inputDataProps: Array<any>
+    dataPropertiesModel: DataPropertiesModel,
+    inputDataModel: InputDataModel
   ): Array<ValidationResponse> {
     let result = new Array<ValidationResponse>();
 
-    for (let idp = 0; idp < inputDataProps.length; idp++) {
-      for (let dtpi = 0; dtpi < dataTemplateProps.length; dtpi++) {
+    for (let idp = 0; idp < inputDataModel.Data.length; idp++) {
+      for (let dtpi = 0; dtpi < dataPropertiesModel.Properties.length; dtpi++) {
         const inputDataValue =
-          inputDataProps[idp][dataTemplateProps[dtpi].Name];
-        const inputDataValidator = dataTemplateProps[dtpi].Validation;
+          inputDataModel.Data[idp][dataPropertiesModel.Properties[dtpi].Name];
+        const inputDataValidator =
+          dataPropertiesModel.Properties[dtpi].Validation;
 
         let response = this.ValidateValues(
           dtpi,
           inputDataValue,
-          dataTemplateProps[dtpi].Name,
+          dataPropertiesModel.Properties[dtpi].Name,
           inputDataValidator
         );
         result.push(response);
