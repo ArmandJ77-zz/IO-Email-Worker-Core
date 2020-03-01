@@ -11,8 +11,7 @@ export default class DataInjectionHandler {
     emailTemplate: any,
     inputDataModel: InputDataModel
   ): DataInjectionResponse {
-    let successModels: Array<DataInjectionSuccessModel> = [];
-    let errorModels: Array<DataInjectionErrorModel> = [];
+    let response = new DataInjectionResponse();
 
     for (let i = 0; i < inputDataModel.Data.length; i++) {
       try {
@@ -25,25 +24,20 @@ export default class DataInjectionHandler {
           enrichedTemplate
         );
 
-        successModels.push(successModel);
+        response.SuccessModels.push(successModel);
       } catch (ex) {
-        let errorModel = new DataInjectionErrorModel(
+        const errorModel = new DataInjectionErrorModel(
           i,
           inputDataModel.Data[i],
           emailTemplate,
           ex
         );
 
-        errorModels.push(errorModel);
+        response.ErrorModels.push(errorModel);
       }
     }
 
-    const response = new DataInjectionResponse(
-      errorModels.length > 0,
-      errorModels,
-      successModels
-    );
-
+    response.IsSuccess = !(response.ErrorModels.length > 0);
     return response;
   }
 }
