@@ -20,7 +20,10 @@ describe(sut, function() {
 
       let result = handler.InjectValues(emailTemplate, inputData);
 
-      console.log(result);
+      if (result.ErrorModels.length > 0) console.log(result);
+      expect(result.ErrorModels.length).to.equal(0);
+      expect(result.SuccessModels.length).to.equal(2);
+      expect(result.IsSuccess).to.equal(true);
     });
   });
 });
