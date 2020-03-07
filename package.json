@@ -1,8 +1,8 @@
 {
   "name": "io-email-worker-core",
-  "version": "1.4.6",
+  "version": "0.0.0",
   "description": "",
-  "main": "IO_EWC.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArmandJ77/IO-Email-Worker-Core.git"
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/ArmandJ77/IO-Email-Worker-Core/issues"
   },
-  "homepage": "https://github.com/ArmandJ77/IO-Email-Worker-Core#readme",
+  "homepage": "https://github.com/ArmandJ77/IO-Email-Worker-Core",
   "scripts": {
     "clean": "rimraf lib",
     "build": "tsc --declaration",
@@ -21,7 +21,8 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "tsc && ts-node ./dist/index.js",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "release": "cd /lib semantic-release"
+    "release": "cd lib & npx semantic-release",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -71,7 +72,8 @@
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "semantic-release": "^17.0.4"
   },
   "_moduleAliases": {
     "@models": "lib/src/models",
@@ -80,5 +82,10 @@
     "@responses": "lib/src/responses",
     "@config": "lib/config",
     "@handlers": "lib/src/handlers"
+  },
+  "release": {
+    "branches": [
+      "next"
+    ]
   }
 }
