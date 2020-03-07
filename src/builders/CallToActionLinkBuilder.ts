@@ -24,7 +24,7 @@ export default class CallToActionLinkBuilder {
 
     private Encript(data: any): string {
         const signature = GetCallToActionSecretToken();
-        const token = jwt.sign(data, signature, { expiresIn: "300 days" });
+        const token = jwt.sign(data, signature, { expiresIn: "200 days" });
         return token;
     }
 }
