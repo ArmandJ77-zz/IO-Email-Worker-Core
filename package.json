@@ -1,13 +1,8 @@
 {
-  "_location": "/io-email-worker-core",
   "name": "io-email-worker-core",
   "version": "1.4.6",
   "description": "",
   "main": "IO_EWC.js",
-  "scripts": {
-    "start": "nodemon -r esm scratchpad.js",
-    "test": "mocha --require esm"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArmandJ77/IO-Email-Worker-Core.git"
@@ -18,15 +13,31 @@
     "url": "https://github.com/ArmandJ77/IO-Email-Worker-Core/issues"
   },
   "homepage": "https://github.com/ArmandJ77/IO-Email-Worker-Core#readme",
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "tsc --declaration",
+    "build:watch": "tsc --w --declaration",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "tsc && ts-node ./dist/index.js",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "release": "cd /lib semantic-release"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
-    "handlebars": "^4.4.5",
+    "handlebars": "^4.7.3",
+    "husky": "^4.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "lint-staged": "^10.0.8",
+    "lodash": "^4.17.15",
     "mjml": "^4.4.0",
+    "module-alias": "^2.2.2",
     "moment": "^2.24.0",
-    "nodemailer": "^6.3.0"
+    "nodemailer": "^6.3.0",
+    "semantic-release": "^17.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -34,12 +45,40 @@
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "@babel/register": "^7.6.2",
+    "@types/body-parser": "^1.19.0",
+    "@types/chai": "^4.2.9",
+    "@types/concurrently": "^5.1.0",
+    "@types/esm": "^3.2.0",
+    "@types/handlebars": "^4.1.0",
+    "@types/jsonwebtoken": "^8.3.8",
+    "@types/lodash": "^4.14.149",
+    "@types/mjml": "^4.0.3",
+    "@types/mocha": "^7.0.1",
+    "@types/moment": "^2.13.0",
+    "@types/nodemailer": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
     "chai": "*",
-    "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.4.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "jshint": "^2.10.2",
     "mocha": "*",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
+  },
+  "_moduleAliases": {
+    "@models": "lib/src/models",
+    "@enums": "lib/src/enums",
+    "@builders": "lib/src/builders",
+    "@responses": "lib/src/responses",
+    "@config": "lib/config",
+    "@handlers": "lib/src/handlers"
   }
 }
