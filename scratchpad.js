@@ -1,0 +1,86 @@
+// import IO_EWC from "./IO_EWC";
+require("dotenv").config({ path: ".env" });
+const IO_EWC = require("./IO_EWC");
+
+const RECEIVER_TEST_EMAIL_ADDRESS = process.env.RECEIVER_TEST_EMAIL_ADDRESS;
+const DISTRIBUTION_EMAIL_ADDRESS = process.env.DISTRIBUTION_EMAIL_ADDRESS;
+const DISTRIBUTION_EMAIL_PASSWORD = process.env.DISTRIBUTION_EMAIL_PASSWORD;
+
+// const GivenAValidDistributionDataSet = {
+//   smtpAccount: {
+//     service: "gmail",
+//     auth: {
+//       user: DISTRIBUTION_EMAIL_ADDRESS,
+//       pass: DISTRIBUTION_EMAIL_PASSWORD
+//     }
+//   },
+//   emailCollection: [
+//     {
+//       from: DISTRIBUTION_EMAIL_ADDRESS,
+//       to: "s@s",
+//       subject: "Testing IO distribution",
+//       body: "<h1>This Is an IO test email</h1>"
+//     },
+//     {
+//       from: DISTRIBUTION_EMAIL_ADDRESS,
+//       to: RECEIVER_TEST_EMAIL_ADDRESS,
+//       subject: "Testing IO distribution",
+//       body: "<h1>This Is an IO test email</h1>"
+//     }
+//   ]
+// };
+
+// const GivenAValidDistributionDataSet = {
+//   smtpAccount: {
+//     host: 'smtp.gmail.com',
+//     port: 465,
+//     secure: true,
+//     auth: {
+//         type: 'OAuth2',
+//         user: 'user@example.com',
+//         accessToken: 'ya29.Xx_XX0xxxxx-xX0X0XxXXxXxXXXxX0x'
+//     }
+//   },
+//   emailCollection: [
+//     {
+//       from: DISTRIBUTION_EMAIL_ADDRESS,
+//       to: "s@s",
+//       subject: "Testing IO distribution",
+//       body: "<h1>This Is an IO test email</h1>"
+//     },
+//     {
+//       from: DISTRIBUTION_EMAIL_ADDRESS,
+//       to: RECEIVER_TEST_EMAIL_ADDRESS,
+//       subject: "Testing IO distribution",
+//       body: "<h1>This Is an IO test email</h1>"
+//     }
+//   ]
+// };
+
+console.log(IO_EWC.greeter("bar"));
+
+// IO_EWC.send(
+//   GivenAValidDistributionDataSet.smtpAccount,
+//   "Testing IO distribution",
+//   GivenAValidDistributionDataSet.emailCollection
+// )
+//   .then(res => console.log(res))
+//   .catch(ex => console.log(ex));
+
+// console.log(DISTRIBUTION_EMAIL_ADDRESS);
+// console.log(DISTRIBUTION_EMAIL_PASSWORD);
+
+// async function send() {
+//   console.log("Starting await");
+
+//   console.log("scratchpad result:" + results);
+// }
+
+// send();
+// console.log("end await");
+// let response = IO_EWC.send(
+//   GivenAValidDistributionDataSet.smtpAccount,
+//   GivenAValidDistributionDataSet.emailCollection
+// );
+
+// console.log("scratchpad result:" + response);
