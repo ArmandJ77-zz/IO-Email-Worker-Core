@@ -6,7 +6,10 @@
       <mj-class name="preheader" color="#000000" font-size="11px" padding-left="25px" padding-right="25px"></mj-class>
       <mj-class name="button" background-color="#fcc245" color="#000000" font-size="18px" border-radius="3px" font-family="Ubuntu, Helvetica, Arial, sans-serif"></mj-class>
     </mj-attributes>
-    <mj-style inline="inline">a { text-decoration: none!important; }
+    <mj-style inline="inline">
+      a {
+        text-decoration: none !important;
+      }
     </mj-style>
   </mj-head>
   <mj-body background-color="#ffffff">
