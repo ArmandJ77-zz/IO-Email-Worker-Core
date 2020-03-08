@@ -1,1 +1,1 @@
-console.log("testin g semantic release v2.3");
+console.log("testing semantic release with breaking change");
